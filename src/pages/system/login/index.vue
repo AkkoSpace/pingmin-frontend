@@ -9,3 +9,8 @@ const { t } = useI18n()
 </template>
 
 <style scoped></style>
+
+<route lang="yaml">
+meta:
+  layout: auth
+</route>
