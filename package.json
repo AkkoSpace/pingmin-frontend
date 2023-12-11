@@ -49,6 +49,7 @@
     "lint-staged": "^15.2.0",
     "markdown-it-link-attributes": "^4.0.1",
     "markdown-it-shikiji": "^0.7.6",
+    "naive-ui": "^2.35.0",
     "pnpm": "^8.11.0",
     "rollup": "^4.6.1",
     "shikiji": "^0.7.6",
