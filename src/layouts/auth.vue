@@ -1,7 +1,5 @@
 <template>
-  <main
-    px-4 py-10
-  >
+  <main>
     <RouterView />
   </main>
 </template>
