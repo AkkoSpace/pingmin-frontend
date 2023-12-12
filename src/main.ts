@@ -10,6 +10,9 @@ import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
 
+// 引入 tdesign 组件库的少量全局样式变量
+import 'tdesign-vue-next/es/style/index.css'
+
 // const routes = setupLayouts(generatedRoutes)
 
 // https://github.com/antfu/vite-ssg
