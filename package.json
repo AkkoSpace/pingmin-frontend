@@ -56,6 +56,7 @@
     "shikiji": "^0.7.6",
     "simple-git-hooks": "^2.9.0",
     "taze": "^0.13.0",
+    "tdesign-icons-vue-next": "^0.2.2",
     "tdesign-vue-next": "^1.7.1",
     "typescript": "^5.3.3",
     "unocss": "^0.58.0",

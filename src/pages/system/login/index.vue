@@ -1,66 +1,67 @@
 <script lang="ts" setup>
-const { t } = useI18n()
-const loginForm = ref({
+import { ref } from 'vue'
+
+const formData = ref({
   userAccount: '',
   userPassword: '',
 })
-const loginRules = ref({
-  userAccount: [
-    { required: true, message: t('systemLogin.userAccountMsg'), trigger: 'blur,change' },
-  ],
-  userPassword: [
-    { required: true, message: t('systemLogin.userPasswordMsg'), trigger: 'blur,change' },
-  ],
-})
-// const login = () => {
-//   const { username, password } = loginForm
-//   loginApi({ username, password }).then(res => {
-//     const { data } = res
-//     if (data.code === 200) {
-//       const { token } = data.data
-//       setToken(token)
-//       router.push({ path: '/' })
-//     }
-//   })
-// }
+
+function onSubmit() {}
+
+function onReset() {}
 </script>
 
 <template>
-  <div h-full w-full>
-    <div ml-15vw h-70vh w-70vw pt-15vh>
-      <n-card hoverable h-full w-full flex flex-row>
-        <n-space h-full w-full>
-          <n-image
-            preview-disabled
-            src="https://akko.space//upload/login.png"
-            width="400"
-            style="height: 100%;width: 100%"
-          />
-          <n-form
-            :model="loginForm"
-            :rules="loginRules"
-            label-placement="left"
-            label-width="auto"
-          >
-            <n-form-item :label="$t('systemLogin.userAccount')" prop="userAccount">
-              <n-input v-model="loginForm.userAccount" :placeholder="$t('systemLogin.userAccountMsg')" />
-            </n-form-item>
-            <n-form-item :label="$t('systemLogin.userPassword')" prop="userPassword">
-              <n-input v-model="loginForm.userPassword" :placeholder="$t('systemLogin.userPasswordMsg')" />
-            </n-form-item>
-            <n-form-item>
-              <n-button round type="info">
-                {{ t('systemLogin.login') }}
-              </n-button>
-            </n-form-item>
-          </n-form>
-        </n-space>
-      </n-card>
+  <div h-full w-full from-blue-200 to-green-200 bg-gradient-to-tr>
+    <div h-screen flex items-center justify-center>
+      <div
+
+        h-30vh w-20vw flex items-center justify-center border-rd-2 bg-white p-2
+      >
+        <t-form
+          :colon="true"
+          :data="formData"
+          :label-width="0"
+          @reset="onReset"
+          @submit="onSubmit"
+        >
+          <t-form-item name="userAccount">
+            <t-input
+              v-model="formData.userAccount"
+              autocomplete="username"
+              placeholder="请输入账号"
+            >
+              <template #prefix-icon>
+                <UserIcon />
+              </template>
+            </t-input>
+          </t-form-item>
+
+          <t-form-item name="userPassword">
+            <t-input
+              v-model="formData.userPassword"
+              autocomplete="current-password"
+              placeholder="请输入密码"
+              type="password"
+            >
+              <template #prefix-icon>
+                <LockOnIcon />
+              </template>
+            </t-input>
+          </t-form-item>
+
+          <t-form-item>
+            <t-button block shape="round" theme="primary" type="submit">
+              登录
+            </t-button>
+          </t-form-item>
+        </t-form>
+      </div>
     </div>
   </div>
 </template>
 
 <route lang="yaml">
 meta:
-  layout: auth
+layout: auth
 </route>

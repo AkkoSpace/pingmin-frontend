@@ -5,6 +5,7 @@ import {
   presetTypography,
   presetUno,
   presetWebFonts,
+  presetWind,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -28,6 +29,7 @@ export default defineConfig({
         mono: 'DM Mono',
       },
     }),
+    presetWind(),
   ],
   transformers: [
     transformerDirectives(),
