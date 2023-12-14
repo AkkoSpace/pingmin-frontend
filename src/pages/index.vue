@@ -16,8 +16,6 @@ function go() {
 const userInfo = localStorage.getItem('userInfo')
 if (!userInfo)
   router.push('/system/login')
-// else
-//   user.setUserInfo(JSON.parse(userInfo))
 
 const { t } = useI18n()
 </script>
