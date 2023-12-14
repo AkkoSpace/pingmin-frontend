@@ -16,6 +16,7 @@ import Shiki from 'markdown-it-shikiji'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { ArcoResolver, NaiveUiResolver, TDesignResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   resolve: {
@@ -53,6 +54,12 @@ export default defineConfig({
         {
           // add any other imports you were relying on
           'vue-router/auto': ['useLink'],
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+          ],
         },
       ],
       dts: 'src/auto-imports.d.ts',
@@ -61,6 +68,12 @@ export default defineConfig({
         'src/stores',
       ],
       vueTemplate: true,
+      resolvers: [
+        ArcoResolver(),
+        TDesignResolver({
+          library: 'vue-next',
+        }),
+      ],
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -70,6 +83,15 @@ export default defineConfig({
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',
+      resolvers: [
+        NaiveUiResolver(),
+        ArcoResolver({
+          sideEffect: true,
+        }),
+        TDesignResolver({
+          library: 'vue-next',
+        }),
+      ],
     }),
 
     // https://github.com/antfu/unocss

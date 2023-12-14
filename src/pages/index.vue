@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 defineOptions({
   name: 'IndexPage',
 })
@@ -6,10 +6,16 @@ const user = useUserStore()
 const name = ref(user.savedName)
 
 const router = useRouter()
+
 function go() {
   if (name.value)
     router.push(`/hi/${encodeURIComponent(name.value)}`)
 }
+
+// 从 localStorage 中获取用户信息
+const userInfo = localStorage.getItem('userInfo')
+if (!userInfo)
+  router.push('/system/login')
 
 const { t } = useI18n()
 </script>
@@ -20,8 +26,8 @@ const { t } = useI18n()
       <div i-carbon-campsite inline-block />
     </div>
     <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
+      <a href="https://github.com/antfu/vitesse" rel="noreferrer" target="_blank">
+        AkkoSpace
       </a>
     </p>
     <p>
